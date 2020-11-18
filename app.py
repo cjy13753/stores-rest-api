@@ -17,10 +17,6 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False # it only turns off flask_s
 app.secret_key = 'jose'
 api = Api(app)
 
-@app.before_first_request # before any request to the app, this function below creates all the tables. It only creates tables that it sees imported. Make sure to import the Models.
-def create_tables():
-    db.create_all()
-
 jwt = JWT(app, authenticate, identity) # /auth (new endpoint)
 
 api.add_resource(Store, '/store/<string:name>')
