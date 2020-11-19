@@ -14,7 +14,7 @@ from db import db
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', 'sqlite:///data.db')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False # it only turns off flask_sqlalchemy modification tracker because sqlalchemy modification(the original version) is better.
-app.secret_key = 'jose'
+app.secret_key = 'jose' # # This is for authentication by jwt. When it comes to production, this key must be more complicated and hidden for the public to be unable to see it.
 api = Api(app)
 
 jwt = JWT(app, authenticate, identity) # /auth (new endpoint)
